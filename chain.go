@@ -386,7 +386,7 @@ func (c *Chain) verify(ctx context.Context, from, to uint64, anchor *Checkpoint)
 			switch {
 			case !started:
 				reason = ErrTruncated
-			case expected == c.firstSeq():
+			case expected == 0 && c.genesis:
 				reason = ErrGenesis
 			}
 			return &VerifyError{Seq: expected, Reason: reason,

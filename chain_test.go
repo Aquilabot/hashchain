@@ -100,6 +100,13 @@ func TestNoGenesisStartsAtOne(t *testing.T) {
 	}
 }
 
+func TestNoGenesisMissingFirstEntry(t *testing.T) {
+	c, s := newTestChain(t, Config{NoGenesis: true}, 3)
+	s.entries = s.entries[1:]
+	_, err := c.Verify(ctx)
+	assertBreak(t, err, 1, ErrSequence)
+}
+
 func TestBatchEqualsSequentialStructure(t *testing.T) {
 	c, s := newTestChain(t, Config{}, 0)
 	recs := make([]Record, 50)
