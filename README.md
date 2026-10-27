@@ -1,5 +1,7 @@
 # hashchain
 
+[![CI](https://github.com/Aquilabot/hashchain/actions/workflows/ci.yml/badge.svg)](https://github.com/Aquilabot/hashchain/actions/workflows/ci.yml)
+
 An append-only, tamper-evident log for Go. Every entry commits to the hash of
 the entry before it, so changing, removing, inserting or reordering a stored
 entry breaks the chain at a point that verification reports exactly.
